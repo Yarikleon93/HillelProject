@@ -1,5 +1,12 @@
-// Project an array of videos into an array of {id,title} pairs using forEach()
-// For each video, add a projected {id, title} pair to the videoAndTitlePairs array.
+/**
+ * Проекцией при работе с данными называется операция, при которой из большой таблицы
+ * мы берем только некоторые поля каждого элемента.
+ * Ниже вы найдете массив объектов (таблицу) с данными по фильмам.
+ * Необходимо создать новый массив, в котором вместо полновесных элементов будут
+ * упрощенные объекты, состоящие только из id и title
+ *
+ * Добавьте объект, состоящий из { id, title } для каждого видео в массив videoAndTitlePairs
+ */
 
 const newReleases = [
   {
@@ -38,9 +45,8 @@ const newReleases = [
 videoAndTitlePairs = [];
 
 // ------------ INSERT CODE HERE! -----------------------------------
-// Use forEach function to accumulate {id, title} pairs from each video.
-// Put the results into the videoAndTitlePairs array using the Array's
-// push() method. Example: videoAndTitlePairs.push(newItem);
+// Используйте метод forEach для сбора {id, title} пар из каждого видео.
+// Положите результаты в массив videoAndTitlePairs используя метод push()
 // ------------ INSERT CODE HERE! -----------------------------------
 
 console.log(videoAndTitlePairs);
