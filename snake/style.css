@@ -8,3 +8,8 @@ body {
   width: 100%;
   position: relative;
 }
+
+#gamefield > div {
+  position: absolute;
+  background-color: green;
+}
