@@ -13,3 +13,7 @@ body {
   position: absolute;
   background-color: green;
 }
+
+.wall {
+  background-color: brown !important;
+}

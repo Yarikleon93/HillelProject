@@ -13,6 +13,9 @@ export function createCell(x, y) {
   return cell;
 }
 
+function borderField ( x, y ) {
+  return  x === 0 || y === 0 || x === FIELD_WIDTH - 1 || y === FIELD_HEIGHT - 1;
+}
 
 export function initGamefield() {
   const gameField = document.getElementById('gamefield');
@@ -23,6 +26,9 @@ export function initGamefield() {
   for (let x = 0; x < FIELD_WIDTH; x++) {
     for (let y = 0; y < FIELD_HEIGHT; y++) {
       const cell = createCell(x, y);
+      if( borderField( x, y)) {
+        cell.classList.add("wall");
+      }
       gameField.appendChild(cell);
     }
   }
