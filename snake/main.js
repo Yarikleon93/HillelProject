@@ -26,9 +26,20 @@ function nextStep() {
   let headX = snake[0].x;
   let headY = snake[0].y;
 
-  if (direction === 'right') {
-    headX = headX + 1;
-  }
+  switch (direction) {
+    case 'right':
+        headX = headX + 1;
+        break
+    case 'left':
+        headX = headX - 1;
+        break
+    case 'up':
+        headY = headY - 1;
+        break
+    case 'down':
+        headY = headY + 1;
+        break
+}
 
   snake.unshift({ x: headX, y: headY });
 
