@@ -13,6 +13,9 @@ export function createCell(x, y) {
   return cell;
 }
 
+function borderField(x, y) {
+  return  x === 0 || y === 0 || x === FIELD_WIDTH - 1 || y === FIELD_HEIGHT - 1;
+}
 
 export function initGamefield() {
   const gameField = document.getElementById('gamefield');
@@ -23,8 +26,33 @@ export function initGamefield() {
   for (let x = 0; x < FIELD_WIDTH; x++) {
     for (let y = 0; y < FIELD_HEIGHT; y++) {
       const cell = createCell(x, y);
+      if(borderField(x, y)) {
+        cell.classList.add('wall');
+      }
       gameField.appendChild(cell);
     }
   }
 
+}
+
+/**
+ * @param {number} x
+ * @param {number} y
+ * @param {string} cellClass
+ */
+export function setCellClass(x, y, cellClass) {
+  const id = `x${x}y${y}`;
+  const cell = document.getElementById(id);
+  cell.className = cellClass;
+}
+
+/**
+ * @param {number} x
+ * @param {number} y
+ * @returns {string}
+ */
+export function getCellClass(x, y) {
+  const id = `x${x}y${y}`;
+  const cell = document.getElementById(id);
+  return cell.className;
 }

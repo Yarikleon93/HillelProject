@@ -13,3 +13,11 @@ body {
   position: absolute;
   background-color: green;
 }
+
+#gamefield > .wall {
+  background-color: brown;
+}
+
+#gamefield > .snake {
+  background-color: black;
+}
