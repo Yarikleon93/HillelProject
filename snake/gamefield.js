@@ -4,6 +4,8 @@ export function createCell(x, y) {
   // add element
   const cell = document.createElement('div');
   cell.id = `x${x}y${y}`;
+  cell.dataset.x = x;
+  cell.dataset.y = y;
 
   cell.style.left = `${x * CELL_SIZE_PX}px`;
   cell.style.top = `${y * CELL_SIZE_PX}px`;
@@ -25,14 +27,26 @@ export function initGamefield() {
 
   for (let x = 0; x < FIELD_WIDTH; x++) {
     for (let y = 0; y < FIELD_HEIGHT; y++) {
-      const cell = createCell(x, y);
-      if(borderField(x, y)) {
+
+      let cell = getCell(x, y);
+      if (!cell) {
+        cell = createCell(x, y);
+        gameField.appendChild(cell);
+      }
+      cell.className = '';
+
+      if (borderField(x, y)) {
         cell.classList.add('wall');
       }
-      gameField.appendChild(cell);
+
     }
   }
 
+}
+
+function getCell(x, y) {
+  const id = `x${x}y${y}`;
+  return document.getElementById(id);
 }
 
 /**
@@ -41,8 +55,7 @@ export function initGamefield() {
  * @param {string} cellClass
  */
 export function setCellClass(x, y, cellClass) {
-  const id = `x${x}y${y}`;
-  const cell = document.getElementById(id);
+  const cell = getCell(x, y);
   cell.className = cellClass;
 }
 
