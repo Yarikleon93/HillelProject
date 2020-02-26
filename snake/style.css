@@ -21,3 +21,7 @@ body {
 #gamefield > .snake {
   background-color: black;
 }
+#gamefield > .food {
+  background-color: yellow;
+  border-radius: 50%;
+}
