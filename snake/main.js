@@ -7,7 +7,9 @@ const START_Y = 10;
 let maxLength = 5;
 let stepLengthMs = 200;
 
+
 let direction = 'right';
+let lastStepDirection = direction;
 
 let snake;
 
@@ -97,6 +99,8 @@ function nextStep() {
       break
   }
 
+  lastStepDirection = direction;
+
   const obstacle = getCellClass(headX, headY);
   if (obstacle) {
     if (obstacle === 'food') {
@@ -132,7 +136,7 @@ function handleKeyDown(e) {
 
   const newDirection = keyDirectionMap[e.code];
 
-  if (isVertical(direction) !== isVertical(newDirection)) {
+  if (isVertical(lastStepDirection) !== isVertical(newDirection)) {
     direction = newDirection;
   }
 }
