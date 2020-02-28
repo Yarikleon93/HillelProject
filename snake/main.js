@@ -19,8 +19,7 @@ function startGame() {
   ];
   direction = 'right';
   initGamefield();
-
-  // TODO: add the very first Food here
+  addFood();
   nextStep();
 }
 
@@ -36,7 +35,12 @@ function handleGameFieldClick(e) {
       direction = 'right';
     }
   } else {
-    // TODO: finish click handler for horizontal movement
+    if (clickY < head.y) {
+      direction = 'up';
+    }
+    if (clickY > head.y) {
+      direction = 'down';
+    }
   }
 
 }
@@ -53,21 +57,22 @@ function init() {
 function gameOver() {
   alert(`Game over. final length: ${snake.length}`);
   startGame();
+  maxLength = 5;
+  stepLengthMs = 200;
 }
 
 function addFood() {
 
   let foodX;
   let foodY;
-  // do {
-  //   foodX = Math.floor(Math.random() * configuration.FIELD_WIDTH);
-    // TODO: Finish addFood code
-    // foodY = Math.random() * configuration.;
 
-    // targetCell = ;
-  // } while (????getCellClass(foodX, foodY)???);
+  do {
+    foodX = Math.floor(Math.random() * configuration.FIELD_WIDTH);
+    foodY = Math.floor(Math.random() * configuration.FIELD_HEIGHT);
 
-  // setCellClass(, 'food')
+  } while (getCellClass(foodX, foodY) !== '');
+
+  setCellClass(foodX, foodY, 'food');
 
 }
 
@@ -79,26 +84,31 @@ function nextStep() {
 
   switch (direction) {
     case 'right':
-        headX = headX + 1;
-        break
+      headX = headX + 1;
+      break
     case 'left':
-        headX = headX - 1;
-        break
+      headX = headX - 1;
+      break
     case 'up':
-        headY = headY - 1;
-        break
+      headY = headY - 1;
+      break
     case 'down':
-        headY = headY + 1;
-        break
+      headY = headY + 1;
+      break
   }
 
   const obstacle = getCellClass(headX, headY);
   if (obstacle) {
-    // TODO: check hit and increase snake maxLength when hit a food
-    // do gameover and return otherwise.
-    clearTimeout(timeout);
-    gameOver();
-    return;
+    if (obstacle === 'food') {
+      maxLength = maxLength + 1;
+      stepLengthMs = stepLengthMs - 20;
+      setCellClass(headX, headY, 'snake');
+      addFood();
+    } else {
+      clearTimeout(timeout);
+      gameOver();
+      return;
+    }
   }
 
   setCellClass(headX, headY, 'snake');
