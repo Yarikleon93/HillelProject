@@ -4,49 +4,95 @@ import * as configuration from './config.js';
 const START_X = 10;
 const START_Y = 10;
 
-let maxLength = 5;
 let stepLengthMs = 200;
 
+const snake = {
+  maxLength: 5,
+  body: [],
+  direction: 'right',
+  lastStepDirection: 'right',
 
-let direction = 'right';
-let lastStepDirection = direction;
+  init() {
+    this.maxLength = 5;
+    this.body = [{ x: START_X, y: START_Y }];
+    this.direction = 'right';
+    this.lastStepDirection = 'right';
+  },
 
-let snake;
+  getHead() {
+    return this.body[0];
+  },
 
-const isVertical = dir => dir === 'up' || dir === 'down';
+  getLength() {
+    return this.body.length;
+  },
 
-function startGame() {
-  snake = [
-    { x: START_X, y: START_Y }
-  ];
-  direction = 'right';
-  initGamefield();
-  addFood();
-  nextStep();
-}
+  nextStep() {
+    this.moveHead();
+  },
 
-function handleGameFieldClick(e) {
-  const head = snake[0];
-  const clickX = Number(e.target.dataset.x);
-  const clickY = Number(e.target.dataset.y);
-  if (isVertical(direction)) {
-    if (clickX < head.x) {
-      direction = 'left';
+  moveHead() {
+    let { x, y } = this.getHead();
+
+    switch (this.direction) {
+      case 'right':
+        x = x + 1;
+        break
+      case 'left':
+        x = x - 1;
+        break
+      case 'up':
+        y = y - 1;
+        break
+      case 'down':
+        y = y + 1;
+        break
     }
-    if (clickX > head.x) {
-      direction = 'right';
-    }
-  } else {
-    if (clickY < head.y) {
-      direction = 'up';
-    }
-    if (clickY > head.y) {
-      direction = 'down';
+
+    this.lastStepDirection = this.direction;
+
+    snake.body.unshift({ x, y });
+  },
+
+  moveTail() {
+    if (this.getLength() > this.maxLength) {
+      const tail = this.body.pop();
+      setCellClass(tail.x, tail.y, '');
     }
   }
 
 }
 
+const isVertical = dir => dir === 'up' || dir === 'down';
+
+function startGame() {
+  initGamefield();
+  snake.init();
+  addFood();
+  nextStep();
+}
+
+function handleGameFieldClick({ target }) {
+  const head = snake.getHead();
+  const clickX = Number(target.dataset.x);
+  const clickY = Number(target.dataset.y);
+  if (isVertical(snake.direction)) {
+    if (clickX < head.x) {
+      snake.direction = 'left';
+    }
+    if (clickX > head.x) {
+      snake.direction = 'right';
+    }
+  } else {
+    if (clickY < head.y) {
+      snake.direction = 'up';
+    }
+    if (clickY > head.y) {
+      snake.direction = 'down';
+    }
+  }
+
+}
 
 function init() {
   startGame();
@@ -54,12 +100,9 @@ function init() {
   gameField.addEventListener('click', handleGameFieldClick);
 }
 
-
-
 function gameOver() {
-  alert(`Game over. final length: ${snake.length}`);
+  alert(`Game over. final length: ${snake.getLength()}`);
   startGame();
-  maxLength = 5;
   stepLengthMs = 200;
 }
 
@@ -72,7 +115,7 @@ function addFood() {
     foodX = Math.floor(Math.random() * configuration.FIELD_WIDTH);
     foodY = Math.floor(Math.random() * configuration.FIELD_HEIGHT);
 
-  } while (getCellClass(foodX, foodY) !== '');
+  } while (getCellClass(foodX, foodY));
 
   setCellClass(foodX, foodY, 'food');
 
@@ -81,32 +124,15 @@ function addFood() {
 function nextStep() {
   const timeout = setTimeout(nextStep, stepLengthMs);
 
-  let headX = snake[0].x;
-  let headY = snake[0].y;
+  snake.nextStep();
 
-  switch (direction) {
-    case 'right':
-      headX = headX + 1;
-      break
-    case 'left':
-      headX = headX - 1;
-      break
-    case 'up':
-      headY = headY - 1;
-      break
-    case 'down':
-      headY = headY + 1;
-      break
-  }
+  const head = snake.getHead();
+  const obstacle = getCellClass(head.x, head.y);
 
-  lastStepDirection = direction;
-
-  const obstacle = getCellClass(headX, headY);
   if (obstacle) {
     if (obstacle === 'food') {
-      maxLength = maxLength + 1;
+      snake.maxLength = snake.maxLength + 1;
       stepLengthMs = stepLengthMs - 20;
-      setCellClass(headX, headY, 'snake');
       addFood();
     } else {
       clearTimeout(timeout);
@@ -115,14 +141,10 @@ function nextStep() {
     }
   }
 
-  setCellClass(headX, headY, 'snake');
+  setCellClass(head.x, head.y, 'snake');
 
-  snake.unshift({ x: headX, y: headY });
+  snake.moveTail();
 
-  if (snake.length > maxLength) {
-    const tail = snake.pop();
-    setCellClass(tail.x, tail.y, '');
-  }
 }
 
 function handleKeyDown(e) {
@@ -136,8 +158,8 @@ function handleKeyDown(e) {
 
   const newDirection = keyDirectionMap[e.code];
 
-  if (isVertical(lastStepDirection) !== isVertical(newDirection)) {
-    direction = newDirection;
+  if (isVertical(snake.lastStepDirection) !== isVertical(newDirection)) {
+    snake.direction = newDirection;
   }
 }
 
