@@ -1,4 +1,4 @@
-import { CanvasLib } from './libs/canvas-lib.js';
+import { CanvasLib } from '../libs/canvas-lib.js';
 
 /** @type CanvasLib */
 let canvas;
