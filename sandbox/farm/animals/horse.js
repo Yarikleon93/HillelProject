@@ -33,12 +33,12 @@ export class Horse extends Animal{
     }
     }
     reversePixelsHorizontally = function() {
-    this.pixels = this.pixels.map(point => {
-        point.x = -point.x;
-        return point;
-    })
+        this.pixels = this.pixels.map(point => {
+            point.x = -point.x;
+            return point;
+        });
     }
-    setColor = function(){
+    setColor() {
         this._canvas.setColor("#6e500b");
     }
 }

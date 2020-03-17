@@ -1,6 +1,7 @@
-import {Animal} from './animal.js';
+import { Animal } from './animal.js';
 
 export class Croco extends Animal {
+  color = 'black';
   pixels = [
     { x: 0 , y: 0 },
     { x: 1 , y: 0 },
@@ -62,7 +63,6 @@ export class Croco extends Animal {
     this._x = this._x + Math.random() - 0.5;
   }
   draw() {
-    this._canvas.setColor('black');
     super.draw();
   }
 }

@@ -34,14 +34,9 @@ function nextFrame(timestamp) {
   setTimeout(nextFrame, 50);
 
   canvas.clear('green');
-  
-  canvas.setColor('white');
-  animals.forEach(animal => {
-      animal.move()
-      animal.setColor();
-      animal.draw();
-    });
-  
+
+  animals.forEach(animal => animal.move());
+  animals.forEach(animal => animal.draw());
 }
 
 
