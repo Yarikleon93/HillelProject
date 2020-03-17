@@ -62,6 +62,7 @@ export class Croco extends Animal {
     this._x = this._x + Math.random() - 0.5;
   }
   draw() {
+    this._canvas.setColor('black');
     super.draw();
   }
 }
