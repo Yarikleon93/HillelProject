@@ -17,4 +17,7 @@ export class Animal {
   draw() {
     this.pixels.forEach(({ x, y }) => this._canvas.setPixel(this._x + x, this._y + y));
   }
+  setColor = function(){
+    this._canvas.setColor("white");
+  }
 }
