@@ -1,5 +1,12 @@
 import { CanvasLib } from '../libs/canvas-lib.js';
-import { Animal, Cow, Chicken, Horse, Croco } from './animals/index.js';
+import {
+  Animal,
+  Cow,
+  Chicken,
+  Horse,
+  Croco,
+  Rabbit,
+} from './animals/index.js';
 
 /** @type ICanvasLib */
 let canvas;
@@ -19,6 +26,10 @@ function main() {
   }
   for (let i = 0; i < 5; i++) {
     animals.push(new Cow(Math.random() * canvas.width, Math.random() * canvas.height, canvas));
+  }
+
+  for (let i = 0; i < 7; i++) {
+    animals.push(new Rabbit(Math.random() * canvas.width, Math.random() * canvas.height, canvas));
   }
 
   for (let i = 0; i < 5; i++) {
