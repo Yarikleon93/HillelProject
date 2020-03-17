@@ -1,6 +1,7 @@
 import { Animal } from './animal.js';
 
 export class Dog extends Animal {
+    color = 'brown';
     phase = Math.random() * 1500;
     pixels = [
         { x: -2, y: -2 },

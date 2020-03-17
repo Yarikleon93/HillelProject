@@ -1,7 +1,7 @@
 import { Animal } from './animal.js';
 
 export class Croco extends Animal {
-  color = 'black';
+  color = '#503F0B';
   pixels = [
     { x: 0 , y: 0 },
     { x: 1 , y: 0 },

@@ -1,6 +1,7 @@
 import { Animal } from './animal.js';
 
 export class Pig extends Animal {
+  color = 'pink';
   pixels = [
     { x: -2 , y: -3 },
     { x: -2 , y: -2 },
@@ -37,7 +38,7 @@ export class Pig extends Animal {
     { x: 3 , y: 2 },
     { x: 3 , y: 3 },
   ];
-  
+
   move = function() {
     this._x = this._x + (Math.random() - 0.5) * 3;
     this._y = this._y + (Math.random() - 0.5) * 3;
