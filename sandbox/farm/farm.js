@@ -7,6 +7,7 @@ import {
   Croco,
   Rabbit,
   Pig,
+  Deer,
 } from './animals/index.js';
 
 /** @type ICanvasLib */
@@ -21,29 +22,21 @@ function main() {
   canvas.init(ZOOM);
 
   setTimeout(nextFrame, 50);
+  const farmConfig = [
+    { animal: Chicken, count: 20 },
+    { animal: Cow, count: 5 },
+    { animal: Deer, count: 3 },
+    { animal: Pig, count: 10 },
+    { animal: Rabbit, count: 7 },
+    { animal: Croco, count: 5 },
+    { animal: Horse, count: 3 },
+  ];
 
-  for (let i = 0; i < 20; i++) {
-    animals.push(new Chicken(Math.random() * canvas.width, Math.random() * canvas.height, canvas));
-  }
-  for (let i = 0; i < 5; i++) {
-    animals.push(new Cow(Math.random() * canvas.width, Math.random() * canvas.height, canvas));
-  }
-
-  for (let i = 0; i < 10; i++) {
-    animals.push(new Pig(Math.random() * canvas.width, Math.random() * canvas.height, canvas));
-  }
-
-  for (let i = 0; i < 7; i++) {
-    animals.push(new Rabbit(Math.random() * canvas.width, Math.random() * canvas.height, canvas));
-  }
-
-  for (let i = 0; i < 5; i++) {
-    animals.push(new Croco(Math.random() * canvas.width, Math.random() * canvas.height, canvas));
-  }
-
-  for (let i = 0; i < 3; i++) {
-    animals.push(new Horse(Math.random() * canvas.width, Math.random() * canvas.height, canvas));
-  }
+  farmConfig.forEach(animalConfig => {
+    for (let i = 0; i < animalConfig.count; i++) {
+      animals.push(animalConfig.animal.createOn(canvas));
+    }
+  })
 }
 
 function nextFrame(timestamp) {
@@ -53,6 +46,7 @@ function nextFrame(timestamp) {
 
   animals.forEach(animal => animal.move());
   animals.forEach(animal => animal.draw());
+
 }
 
 

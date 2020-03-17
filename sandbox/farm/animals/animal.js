@@ -22,4 +22,11 @@ export class Animal {
   setColor(color){
     this._canvas.setColor(color);
   }
+
+  /**
+   * @param {ICanvasLib} canvas
+   */
+  static createOn(canvas) {
+    return new this(Math.random() * canvas.width, Math.random() * canvas.height, canvas);
+  }
 }
