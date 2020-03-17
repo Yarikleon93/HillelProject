@@ -4,6 +4,7 @@ import {
   Cow,
   Chicken,
   Horse,
+  TallHorse,
   Croco,
   Rabbit,
   Pig,
@@ -24,6 +25,7 @@ function main() {
   canvas.init(ZOOM);
 
   setTimeout(nextFrame, 50);
+
   const farmConfig = [
     { animal: Chicken, count: 20 },
     { animal: Cow, count: 5 },
@@ -32,6 +34,7 @@ function main() {
     { animal: Rabbit, count: 7 },
     { animal: Croco, count: 5 },
     { animal: Horse, count: 3 },
+    { animal: TallHorse, count: 5 },
     { animal: Dog, count: 8 },
     { animal: ZooKeeper, count: 3 },
   ];
