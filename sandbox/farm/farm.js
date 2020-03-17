@@ -6,6 +6,7 @@ import {
   Horse,
   Croco,
   Rabbit,
+  Pig,
 } from './animals/index.js';
 
 /** @type ICanvasLib */
@@ -26,6 +27,10 @@ function main() {
   }
   for (let i = 0; i < 5; i++) {
     animals.push(new Cow(Math.random() * canvas.width, Math.random() * canvas.height, canvas));
+  }
+
+  for (let i = 0; i < 10; i++) {
+    animals.push(new Pig(Math.random() * canvas.width, Math.random() * canvas.height, canvas));
   }
 
   for (let i = 0; i < 7; i++) {
