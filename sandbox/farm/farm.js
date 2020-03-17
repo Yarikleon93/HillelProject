@@ -29,6 +29,7 @@ function main() {
   for (let i = 0; i < 5; i++) {
     animals.push(new Cow(Math.random() * canvas.width, Math.random() * canvas.height, canvas));
   }
+  
   for (let i = 0; i < 3; i++) {
     animals.push(new Deer(Math.random() * canvas.width, Math.random() * canvas.height, canvas));
   }
@@ -57,7 +58,6 @@ function nextFrame(timestamp) {
 
   animals.forEach(animal => animal.move());
   animals.forEach(animal => animal.draw());
-
 }
 
 
