@@ -8,6 +8,7 @@ import {
   Rabbit,
   Pig,
   Deer,
+  Dog,
 } from './animals/index.js';
 
 /** @type ICanvasLib */
@@ -30,6 +31,7 @@ function main() {
     { animal: Rabbit, count: 7 },
     { animal: Croco, count: 5 },
     { animal: Horse, count: 3 },
+    { animal: Dog, count: 8 },
   ];
 
   farmConfig.forEach(animalConfig => {
