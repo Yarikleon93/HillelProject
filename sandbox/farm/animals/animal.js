@@ -1,5 +1,6 @@
 export class Animal {
   pixels = [];
+  color = 'white';
 
   /**
    * @param {number} x
@@ -15,6 +16,17 @@ export class Animal {
   move() {}
 
   draw() {
+    this.setColor(this.color);
     this.pixels.forEach(({ x, y }) => this._canvas.setPixel(this._x + x, this._y + y));
+  }
+  setColor(color){
+    this._canvas.setColor(color);
+  }
+
+  /**
+   * @param {ICanvasLib} canvas
+   */
+  static createOn(canvas) {
+    return new this(Math.random() * canvas.width, Math.random() * canvas.height, canvas);
   }
 }
