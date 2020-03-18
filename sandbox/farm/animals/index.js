@@ -8,3 +8,4 @@ export * from './horse.js';
 export * from './deer.js';
 export * from './dog.js';
 export * from './zooKeeper.js';
+export * from './lama.js';
