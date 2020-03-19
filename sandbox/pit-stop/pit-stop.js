@@ -2,9 +2,8 @@ const WHEEL_INSTALLED = `wheelInstalled`;
 const TANK_FULL = 'tankFull';
 
 class Mechanic {
-  constructor() {
-    this.node = document.querySelector('.mechanic:not(.alive)');
-    this.node.classList.add('alive');
+  constructor(node) {
+    this.node = node;
     this.isWheelman = this.node.classList.contains('wheelman');
     this.eventName = TANK_FULL;
     if (this.isWheelman) {
@@ -26,9 +25,8 @@ class Mechanic {
 }
 
 function createMechanics() {
-  for (let i = 0; i < 5; i++) {
-    new Mechanic();
-  }
+  document.querySelectorAll('.mechanic')
+    .forEach(node => new Mechanic(node));
 }
 
 function main() {
