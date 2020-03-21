@@ -1,4 +1,4 @@
-import { createCell, initGamefield, setCellClass, getCellClass } from './gamefield.js';
+import { initGamefield, setCellClass, getCellClass } from './gamefield.js';
 import * as configuration from './config.js';
 
 const START_X = 10;

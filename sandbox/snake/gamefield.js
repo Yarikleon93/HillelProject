@@ -38,10 +38,8 @@ export function initGamefield() {
       if (borderField(x, y)) {
         cell.classList.add('wall');
       }
-
     }
   }
-
 }
 
 function getCell(x, y) {

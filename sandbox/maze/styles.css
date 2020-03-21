@@ -1,0 +1,33 @@
+body, html {
+  height: 100%;
+  width: 100%;
+  background-color: grey;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#gamefield {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+#gamefield > div {
+  border-left: 1px solid rgba(255,255,255, 0.05);
+  border-top: 1px solid rgba(255,255,255, 0.05);
+  position: absolute;
+  background-color: green;
+}
+
+#gamefield > .wall {
+  background-color: #222;
+}
+#gamefield > .permawall {
+  background-color: #222;
+}
