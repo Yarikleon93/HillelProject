@@ -21,7 +21,8 @@
           <div class="card-title">
             Controls
           </div>
-          <button type="button" class="btn btn-info" onclick="buttonClick()">Button</button>
+          <button type="button" class="btn btn-info" onclick="console.log('before'); sleepButtonClick(); console.log('after');">Sleep 10 sec</button>
+          <button type="button" class="btn btn-warning" onclick="console.log('before'); throwButtonClick(); console.log('after');">Throw error</button>
         </div>
       </div>
       <div class="card result">
