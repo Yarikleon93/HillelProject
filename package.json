@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start": "live-server . --open=sandbox"
+    "start": "live-server . --open=sandbox",
+    "sandbox": "live-server . --open=sandbox"
   },
   "repository": {
     "type": "git",
