@@ -12,9 +12,9 @@
  *
  * @param {object} input - an input object
  * @param {string[]} props - properties to omit
- * @return {Partial<object>}
+ * @return {object}
  */
-function omit() {
+function omit(input, props) {
   /** YOUR CODE HERE */
 }
 
@@ -33,8 +33,8 @@ function omit() {
  *
  * @param {object} input - an input object
  * @param {string[]} props - properties to pick from the input object
- * @return {Partial<object>}
+ * @return {object}
  */
-function pick() {
+function pick(input, props) {
   /** YOUR CODE HERE */
 }
