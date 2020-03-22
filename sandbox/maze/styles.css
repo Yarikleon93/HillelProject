@@ -25,9 +25,15 @@ body {
   background-color: green;
 }
 
+#gamefield > .untouched {
+  background-color: #222;
+}
 #gamefield > .wall {
   background-color: #222;
 }
 #gamefield > .permawall {
   background-color: #222;
+}
+#gamefield > .crackedwall {
+  background-color: #444;
 }
