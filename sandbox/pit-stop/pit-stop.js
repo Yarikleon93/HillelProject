@@ -2,6 +2,9 @@ const WHEEL_INSTALLED = `wheelInstalled`;
 const TANK_FULL = 'tankFull';
 
 class Mechanic {
+  /**
+   * @param {HTMLElement} node
+   */
   constructor(node) {
     this.node = node;
     this.isWheelman = this.node.classList.contains('wheelman');
@@ -20,7 +23,9 @@ class Mechanic {
       this.wheel.classList.add('installed');
     }
     this.node.dispatchEvent(new CustomEvent(this.eventName, { bubbles: true }));
-    this.node.classList.add('ready');
+    if (!this.node.closest('.go')) {
+      this.node.classList.add('ready');
+    }
   }
 }
 
