@@ -38,7 +38,7 @@ function main() {
     { animal: TallHorse, count: 5 },
     { animal: Dog, count: 8 },
     { animal: ZooKeeper, count: 3 },
-    { animal: ZooKeeper, count: 9 },
+    { animal: Lama, count: 9 },
   ];
 
   farmConfig.forEach(animalConfig => {
