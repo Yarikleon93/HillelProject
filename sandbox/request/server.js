@@ -3,7 +3,7 @@
  */
 const http = require('http');
 
-const PORT = process.env.PORT || 5000
+const PORT = 80;
 let responseCount = 0;
 
 /**
@@ -35,4 +35,4 @@ const handleRequest = (req, res) => {
 }
 
 http.createServer(handleRequest)
-  .listen(PORT);
+  .listen(PORT, () => console.log('listening'));
