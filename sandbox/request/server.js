@@ -32,7 +32,7 @@ const handleRequest = (req, res) => {
 
   res.statusCode = 404;
   res.end();
-}
+};
 
 http.createServer(handleRequest)
   .listen(PORT, () => console.log('listening'));

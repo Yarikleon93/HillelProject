@@ -103,24 +103,24 @@ export class Maze extends EventTarget {
   _exploreCell(cellX, cellY) {
     const cellId = `x${cellX}y${cellY}`;
     switch (this.getCell(cellX, cellY)) {
-      // A common wall found. We'll put some cracks on it and track its location.
-      case 'wall':
-        this.crackedWalls.push(cellId);
-        this.setCell(cellX, cellY, 'crackedwall');
-        return;
+    // A common wall found. We'll put some cracks on it and track its location.
+    case 'wall':
+      this.crackedWalls.push(cellId);
+      this.setCell(cellX, cellY, 'crackedwall');
+      return;
       // a wall found second time from other side, so it should not be removed.
       // Remove its location from crackedWalls array.
-      case 'crackedwall':
-        this.crackedWalls.splice(this.crackedWalls.indexOf(cellId), 1);
-        this.setCell(cellX, cellY, 'permawall');
-        return;
+    case 'crackedwall':
+      this.crackedWalls.splice(this.crackedWalls.indexOf(cellId), 1);
+      this.setCell(cellX, cellY, 'permawall');
+      return;
       // an empty space. Need to check out its suroundings.
       // Remove all classes to prevent any further action for this cell
-      case 'untouched':
-        this.setCell(cellX, cellY, '');
-        Maze.directions.forEach(({ x, y }) => this._exploreCell(cellX + x, cellY + y));
-        return;
-      default:
+    case 'untouched':
+      this.setCell(cellX, cellY, '');
+      Maze.directions.forEach(({ x, y }) => this._exploreCell(cellX + x, cellY + y));
+      return;
+    default:
     }
   }
 

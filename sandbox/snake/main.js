@@ -7,7 +7,7 @@ const START_Y = 10;
 let stepLengthMs = 200;
 
 const snake = {
-  maxLength: 5,
+  maxLength: 5
   body: [],
   direction: 'right',
   lastStepDirection: 'right',
@@ -35,18 +35,18 @@ const snake = {
     let { x, y } = this.getHead();
 
     switch (this.direction) {
-      case 'right':
-        x = x + 1;
-        break
-      case 'left':
-        x = x - 1;
-        break
-      case 'up':
-        y = y - 1;
-        break
-      case 'down':
-        y = y + 1;
-        break
+    case 'right':
+      x = x + 1;
+      break;
+    case 'left':
+      x = x - 1;
+      break;
+    case 'up':
+      y = y - 1;
+      break;
+    case 'down':
+      y = y + 1;
+      break;
     }
 
     this.lastStepDirection = this.direction;
@@ -61,7 +61,7 @@ const snake = {
     }
   }
 
-}
+};
 
 const isVertical = dir => dir === 'up' || dir === 'down';
 
@@ -154,7 +154,7 @@ function handleKeyDown(e) {
     ArrowDown: 'down',
     ArrowLeft: 'left',
     ArrowRight: 'right',
-  }
+  };
 
   const newDirection = keyDirectionMap[e.code];
 

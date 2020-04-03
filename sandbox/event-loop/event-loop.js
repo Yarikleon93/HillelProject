@@ -4,19 +4,8 @@
  */
 function sleep(ms) {
   const start = Date.now();
+  // eslint-disable-next-line no-empty
   while (Date.now() - ms < start) {
-  }
-}
-
-/**
- * Safely parses JSON string
- * @param {string} json
- */
-function safeParse(json) {
-  try {
-    return JSON.parse(json);
-  } catch (e) {
-    return null;
   }
 }
 
@@ -29,5 +18,5 @@ function sleepButtonClick() {
 function throwButtonClick() {
   document.body.style.background = 'red';
   throw new Error('A handmade error');
-  document.body.style.background = 'initial';
+  // document.body.style.background = 'initial';
 }

@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start": "live-server . --open=sandbox",
-    "sandbox": "live-server . --open=sandbox"
+    "start": "npm run lint && live-server . --open=sandbox",
+    "sandbox": "live-server . --open=sandbox",
+    "lint": "eslint sandbox"
   },
   "repository": {
     "type": "git",
@@ -20,7 +21,9 @@
   },
   "homepage": "https://github.com/zamuka/hillelfrontend#readme",
   "devDependencies": {
-    "jest": "25.1.0",
+    "babel-eslint": "10.1.0",
+    "eslint": "6.8.0",
     "live-server": "1.2.1"
-  }
+  },
+  "dependencies": {}
 }

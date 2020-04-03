@@ -1,6 +1,5 @@
 import { CanvasLib } from '../libs/canvas-lib.js';
 import {
-  Animal,
   Cow,
   Chicken,
   Horse,
@@ -45,10 +44,10 @@ function main() {
     for (let i = 0; i < animalConfig.count; i++) {
       animals.push(animalConfig.animal.createOn(canvas));
     }
-  })
+  });
 }
 
-function nextFrame(timestamp) {
+function nextFrame() {
   setTimeout(nextFrame, 50);
 
   canvas.clear('green');

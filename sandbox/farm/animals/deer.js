@@ -60,10 +60,10 @@ export class Deer extends Animal {
   ];
   move() {
     this._y = this._y + Math.random() - 0.5;
-  };
+  }
 
   draw() {
-    this._canvas.setColor("yellow");
+    this._canvas.setColor('yellow');
     super.draw();
-  };
+  }
 }

@@ -57,7 +57,7 @@ function requestHandler(request, response) {
       const query = queryString.parse(body);
       response.write(createTable(query));
       response.end();
-    })
+    });
   }
 }
 

@@ -24,17 +24,17 @@ function CanvasLib(elementSelector) {
     ctx.webkitImageSmoothingEnabled = false;
     this.width = Math.floor(canvas.width / this.zoom);
     this.height = Math.floor(canvas.height / this.zoom);
-  }
+  };
 
   this.setColor = function(color) {
     if (color) {
       ctx.fillStyle = color;
     }
-  }
+  };
 
   this.setPixel = function(x, y) {
     ctx.fillRect(Math.floor(x), Math.floor(y), 1, 1);
-  }
+  };
 
   this.line = function(x1, y1, x2, y2) {
     const dx = x2 - x1;
@@ -58,16 +58,16 @@ function CanvasLib(elementSelector) {
 
       this.setPixel(Math.floor(pointX), Math.floor(pointY));
     }
-  }
+  };
 
   this.clear = function(color) {
     this.setColor(color);
     this.fillRect(0, 0, this.width, this.height);
-  }
+  };
 
   this.fillRect = function(x, y, w, h)  {
     ctx.fillRect(x, y, w, h);
-  }
+  };
 }
 
 export {

@@ -1,4 +1,4 @@
-const WHEEL_INSTALLED = `wheelInstalled`;
+const WHEEL_INSTALLED = 'wheelInstalled';
 const TANK_FULL = 'tankFull';
 
 class Mechanic {
@@ -11,7 +11,7 @@ class Mechanic {
     this.eventName = TANK_FULL;
     if (this.isWheelman) {
       this.eventName = WHEEL_INSTALLED;
-      this.wheel = document.querySelector('.wheel:not(.taken)')
+      this.wheel = document.querySelector('.wheel:not(.taken)');
       this.wheel.classList.add('taken');
     }
     const timeout = 1000 + Math.random() * 6000;

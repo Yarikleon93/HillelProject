@@ -18,7 +18,7 @@ Server: Homemade
 
 `);
     socket.end();
-  })
+  });
 }
 
 const server = net.createServer(requestHandler);
