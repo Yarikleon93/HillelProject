@@ -45,6 +45,22 @@ function main() {
       animals.push(animalConfig.animal.createOn(canvas));
     }
   });
+  
+
+  let farm = document.querySelector('.farm');
+  function dellAnimal(e) {
+    const mouseClickX =  Math.floor((e.pageX - farm.offsetLeft)/ZOOM);
+    const mouseClickY =  Math.floor((e.pageY - farm.offsetTop)/ZOOM);
+    animals.forEach((animal,index) => {
+      let isAnimal = animal.pixels.find((animalPixel) =>
+        Math.round(animal._x) + animalPixel.x === mouseClickX && Math.round(animal._y) + animalPixel.y === mouseClickY);
+      if(isAnimal) {
+        animals.splice(index,1);
+      }
+    });   
+  }
+  farm.addEventListener('click', dellAnimal);
+
 }
 
 function nextFrame() {
@@ -56,6 +72,8 @@ function nextFrame() {
   animals.forEach(animal => animal.draw());
 
 }
+
+
 
 
 window.addEventListener('load', main);
